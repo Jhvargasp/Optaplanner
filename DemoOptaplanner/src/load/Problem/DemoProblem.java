@@ -9,15 +9,14 @@ import load.Beans.Computer;
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
 import org.optaplanner.core.api.domain.value.ValueRangeProvider;
-import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
+import org.optaplanner.core.api.score.buildin.hardsoftdouble.HardSoftDoubleScore;
 import org.optaplanner.core.api.score.buildin.hardsoftlong.HardSoftLongScore;
-import org.optaplanner.core.api.score.buildin.simple.SimpleScore;
 import org.optaplanner.core.impl.solution.Solution;
 
 @PlanningSolution
-public class DemoProblem implements Solution<HardSoftLongScore> {
+public class DemoProblem implements Solution<HardSoftDoubleScore> {
 
-	private HardSoftLongScore score;
+	private HardSoftDoubleScore score;
 
 	private List<load.Beans.Process> processList;
 
@@ -67,12 +66,12 @@ public class DemoProblem implements Solution<HardSoftLongScore> {
 	}
 
 	@Override
-	public HardSoftLongScore getScore() {
+	public HardSoftDoubleScore getScore() {
 		return score;
 	}
 
 	@Override
-	public void setScore(HardSoftLongScore arg0) {
+	public void setScore(HardSoftDoubleScore arg0) {
 		this.score=arg0;
 	}
 

@@ -1,15 +1,13 @@
 package load.score;
 
 import java.util.HashMap;
-import java.util.Set;
 
 import load.Beans.Computer;
 import load.Beans.Process;
 import load.Problem.DemoProblem;
 
 import org.optaplanner.core.api.score.Score;
-import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
-import org.optaplanner.core.api.score.buildin.hardsoftlong.HardSoftLongScore;
+import org.optaplanner.core.api.score.buildin.hardsoftdouble.HardSoftDoubleScore;
 import org.optaplanner.core.impl.score.director.incremental.IncrementalScoreCalculator;
 
 public class DIncrementalScoreCalculator implements
@@ -74,8 +72,8 @@ public class DIncrementalScoreCalculator implements
 			System.out.println();
 		}
 		
-		System.out.println(HardSoftLongScore.valueOf(hardScore, softScore));
-		return HardSoftLongScore.valueOf(hardScore, softScore);
+		System.out.println(HardSoftDoubleScore.valueOf(hardScore, softScore));
+		return HardSoftDoubleScore.valueOf(hardScore, softScore);
 	}
 
 	HashMap<String, Integer> uso = new HashMap<String, Integer>();

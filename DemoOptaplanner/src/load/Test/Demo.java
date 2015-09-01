@@ -19,6 +19,8 @@ import org.optaplanner.core.config.solver.XmlSolverFactory;
 public class Demo {
 
 	public static void main(String[] args) {
+		
+		System.out.println((double)3/2);
 		// Build the SolverX
 		SolverFactory solverFactory = new XmlSolverFactory(
 				"/load/solver/SolverConfig.xml");

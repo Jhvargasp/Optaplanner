@@ -1,0 +1,54 @@
+package load.score;
+    dialect "java"
+
+import org.optaplanner.core.api.score.buildin.hardsoftdouble.HardSoftDoubleScoreHolder;
+
+import load.Beans.Computer;
+import load.Beans.Process;
+
+global HardSoftDoubleScoreHolder scoreHolder;
+
+// ############################################################################
+// Hard constraints
+// ############################################################################
+
+
+rule "roomCapacityTooSmall" // TODO improve performance, as it takes 50% of the performance
+    when
+        $cpu1 : Computer($cpuPower : cpuPower  )
+       // $ps1 : Process(computer  == $cpu1  )
+        $sumTotal : Number( )
+        	from accumulate( Process( computer  == $cpu1, $rC : requiredCpu   ),
+                              sum( $rC ) )
+    then
+    	//System.out.println("cpuPower"+ $cpuPower);
+    	//System.out.println("Total"+ $sumTotal);
+    	//System.out.println($sumTotal.intValue());
+    	double f= (double)$sumTotal.intValue()/$cpuPower;
+    	//System.out.println(f);
+    	if(((f)*100)>100){ //sobrepasa capacidad
+    		scoreHolder.addHardConstraintMatch(kcontext, -100);
+    	}else{
+    		scoreHolder.addHardConstraintMatch(kcontext, f);//*(100)
+    	}
+    	
+        
+end
+/*
+// Room Penalty
+rule "roomPenalty"
+    when
+        $cpu1 : Computer($cpuPower : cpuPower  )
+        $ps1 : Process(computer  == $cpu1  )
+        $sumTotal : Number( )
+        	from accumulate( Process( computer  == $cpu1, $rC : requiredCpu   ),
+                              sum( $rC ) )
+    then
+    	if($cpuPower - $sumTotal.intValue() > 0 ){
+    		System.out.println("Resta: "+  ($cpuPower - $sumTotal.intValue()));
+    	}else{
+    		System.out.println("fallo: "+  ($cpuPower - $sumTotal.intValue()));
+    	}
+    	scoreHolder.addSoftConstraintMatch(kcontext, ($cpuPower-($cpuPower - $sumTotal.intValue())));
+end
+*/

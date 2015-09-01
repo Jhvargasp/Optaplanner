@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solver>
-	<!--<environmentMode>FAST_ASSERT</environmentMode> -->
+	<environmentMode>FAST_ASSERT</environmentMode> 
 	<solutionClass>load.Problem.DemoProblem</solutionClass>
 	<planningEntityClass>load.Beans.Process</planningEntityClass>
 
 	<scoreDirectorFactory>
-		<scoreDefinitionType>HARD_SOFT_LONG</scoreDefinitionType><!-- HARD_SOFT_LONG -->
-		<incrementalScoreCalculatorClass>load.score.DIncrementalScoreCalculator</incrementalScoreCalculatorClass>
-		<!--<scoreDrl>/org/optaplanner/examples/machinereassignment/solver/machineReassignmentScoreRules.drl</scoreDrl> -->
+		<scoreDefinitionType>HARD_SOFT_DOUBLE</scoreDefinitionType><!-- HARD_SOFT_LONG -->
+<!--		<incrementalScoreCalculatorClass>load.score.DIncrementalScoreCalculator</incrementalScoreCalculatorClass>--> 
+		 <scoreDrl>/sampleCalculator.drl</scoreDrl> 
 	</scoreDirectorFactory>
 	
 
@@ -17,12 +17,12 @@
     <bestScoreLimit>0hard/20soft</bestScoreLimit>  -->
     
       <terminationCompositionStyle>OR</terminationCompositionStyle>
-    <maximumSecondsSpend>10</maximumSecondsSpend> 
+    <maximumSecondsSpend>100</maximumSecondsSpend> 
      <scoreAttained>0hard/10soft</scoreAttained>
     
   </termination>
   <constructionHeuristic>
-    <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>
+    <constructionHeuristicType>BEST_FIT_DECREASING</constructionHeuristicType>
     <forager>
       <pickEarlyType>FIRST_NON_DETERIORATING_SCORE</pickEarlyType>
     </forager>
