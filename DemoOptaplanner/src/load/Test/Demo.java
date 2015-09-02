@@ -9,7 +9,7 @@ import load.Problem.ProcessGenerator;
 
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
-import org.optaplanner.core.config.solver.XmlSolverFactory;
+//import org.optaplanner.core.config.solver.XmlSolverFactory;
 //import org.optaplanner.examples.nqueens.domain.NQueens;
 //import org.optaplanner.examples.nqueens.persistence.NQueensGenerator;
 
@@ -20,18 +20,22 @@ public class Demo {
 
 	public static void main(String[] args) {
 		
+		String SOLVER_CONFIG="SolverConfig62.xml";
+		
 		System.out.println((double)3/2);
+		SolverFactory solverFactory = SolverFactory.createFromXmlResource(SOLVER_CONFIG);
 		// Build the SolverX
-		SolverFactory solverFactory = new XmlSolverFactory(
-				"/load/solver/SolverConfig.xml");
+		//apply to 6.0.0
+		/*SolverFactory solverFactory = new XmlSolverFactory(
+				SOLVER_CONFIG);*/
 		Solver solver = solverFactory.buildSolver();
 
 		// Load a problem
 		DemoProblem unsolvedProblems = ProcessGenerator.createProblem();
 
 		// Solve the problem
-		solver.setPlanningProblem(unsolvedProblems);
-		solver.solve();
+		//solver.setPlanningProblem(unsolvedProblems);
+		solver.solve(unsolvedProblems);
 		DemoProblem solved = (DemoProblem) solver.getBestSolution();
 		printSolution(solved);
 

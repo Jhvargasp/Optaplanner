@@ -17,7 +17,7 @@ public class ProcessGenerator {
 
 	private static List<Process> createProcessList() {
 		List<Process> ls = new ArrayList<Process>();
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 30; i++) {
 			Process comp = new Process();
 			comp.setRequiredCpu(200);
 			ls.add(comp);
@@ -53,7 +53,7 @@ public class ProcessGenerator {
 
 	private static List<Computer> createComputerList() {
 		List<Computer> ls = new ArrayList<>();
-		for (int i = 0; i < 300; i++) {
+		for (int i = 0; i < 30; i++) {
 			Computer comp = new Computer();
 			comp.setCpuPower(2000);
 			comp.setMemory(300);

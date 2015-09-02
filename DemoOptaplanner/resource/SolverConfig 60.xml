@@ -27,7 +27,7 @@
       <pickEarlyType>FIRST_NON_DETERIORATING_SCORE</pickEarlyType>
     </forager>
   </constructionHeuristic>
-  <localSearch>
+ <!--   <localSearch>
     <acceptor>
       <entityTabuSize>7</entityTabuSize>
     </acceptor>
@@ -35,5 +35,5 @@
       <acceptedCountLimit>4</acceptedCountLimit>
     </forager>
   </localSearch>
-	
+	-->
 </solver>
